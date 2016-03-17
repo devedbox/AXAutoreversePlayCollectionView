@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXAutoreversePlayCollectionView.h"
 
 @interface ViewController : UIViewController
 
-
+/// Collection view.
+@property(weak, nonatomic) IBOutlet AXAutoreversePlayCollectionView *collectionView;
 @end
 

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,62 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wg8-YP-Eik" customClass="AXAutoreversePlayCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <collectionViewLayout key="collectionViewLayout" id="MbU-9v-Kch" customClass="AXCollectionViewFlowLayout"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="123456" id="jO1-tI-t0e" customClass="CollectionViewCell">
+                                        <rect key="frame" x="120.5" y="0.0" width="359" height="218"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="218"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ji1-l4-faM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="218"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Ji1-l4-faM" secondAttribute="trailing" id="54e-KH-jhC"/>
+                                            <constraint firstItem="Ji1-l4-faM" firstAttribute="leading" secondItem="jO1-tI-t0e" secondAttribute="leading" id="9yE-lF-aUh"/>
+                                            <constraint firstItem="Ji1-l4-faM" firstAttribute="top" secondItem="jO1-tI-t0e" secondAttribute="top" id="geA-KA-HZT"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ji1-l4-faM" secondAttribute="bottom" id="zW5-zF-Wwd"/>
+                                        </constraints>
+                                        <size key="customSize" width="359" height="218"/>
+                                        <connections>
+                                            <outlet property="imgView" destination="Ji1-l4-faM" id="ptG-fK-viI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="autoReverseTimeinternal">
+                                        <real key="value" value="0.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="YLn-aN-rwz"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KBJ-a6-eC8"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wg8-YP-Eik" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3FL-pF-fU6"/>
+                            <constraint firstAttribute="trailing" secondItem="wg8-YP-Eik" secondAttribute="trailing" id="Qze-Uo-S8c"/>
+                            <constraint firstItem="wg8-YP-Eik" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="anE-QM-H6L"/>
+                            <constraint firstItem="wg8-YP-Eik" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gds-D3-r0l"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="wg8-YP-Eik" id="ndy-Te-TWB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="380" y="302"/>
         </scene>
     </scenes>
 </document>
