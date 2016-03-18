@@ -1,16 +1,16 @@
 Pod::Spec.new do |s|
 
-  s.name         = "AXBadgeView-Swift"
-  s.version      = "1.0.0"
-  s.summary      = "AXBadgeView-Swift is a tool to add badge view to your projects."
+  s.name         = "AXAutoreversePlayCollectionView"
+  s.version      = "1.1.0"
+  s.summary      = "AXAutoreversePlayCollectionView a auto reverse play view."
   s.description  = <<-DESC
-                      AXBadgeView-Swift is a tool to add badge view to your projects on ios platform using swift.
+                      AXAutoreversePlayCollectionView a auto reverse play view using for advertisement.
                       DESC
   s.homepage     = "https://github.com/devedbox/AXAutoreversePlayCollectionView"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "devedbox" => "devedbox@gmail.com" }
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/devedbox/AXAutoreversePlayCollectionView.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/devedbox/AXAutoreversePlayCollectionView.git", :tag => "1.1.0" }
   s.source_files  = "AXAutoreversePlayCollectionView/AXAutoreversePlayCollectionView/*.{h,m}"
   s.frameworks = "UIKit", "Foundation"
   s.requires_arc = true

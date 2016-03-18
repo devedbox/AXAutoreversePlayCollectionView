@@ -49,7 +49,7 @@
                                 </cells>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="autoReverseTimeinternal">
-                                        <real key="value" value="0.25"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>

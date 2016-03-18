@@ -30,12 +30,16 @@ typedef NS_ENUM(NSInteger, AXAutoreversePlayPageControlPosition) {
 /// Auto reverse time delay. Defatuls is 5.0f.
 @property(assign, nonatomic) IBInspectable double autoReverseTimeinternal;
 /// Page control offset. Defaults is (-10, 0)
-@property(assign, nonatomic) IBInspectable CGPoint pageOffset;
+@property(assign, nonatomic) IBInspectable CGPoint pageControlOffset;
 /// Position of page control. Defaults is right.
 @property(assign, nonatomic) IBInspectable AXAutoreversePlayPageControlPosition position;
+/// Count of reverse limits. Defatilts is 10(count*100).
+@property(assign, nonatomic) IBInspectable NSInteger reverseLimits;
 
 - (void)reloadData;
 
 - (void)pauseReverse;
 - (void)startReverse;
+
+- (void)locateDataSourceToCenter;
 @end

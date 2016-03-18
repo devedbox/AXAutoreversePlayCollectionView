@@ -24,6 +24,11 @@ static NSString *AXResusIdentifier = @"AXResusIdentifier";
     [_collectionView.collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:AXResusIdentifier];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [_collectionView locateDataSourceToCenter];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
