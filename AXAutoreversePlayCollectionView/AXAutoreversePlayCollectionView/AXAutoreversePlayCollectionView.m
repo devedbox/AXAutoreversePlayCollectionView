@@ -310,7 +310,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldHighlightItemAtIndexPath:)]) {
         return [_delegate collectionView:collectionView shouldHighlightItemAtIndexPath:indexPath];
     }
-    return NO;
+    return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
@@ -332,7 +332,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldSelectItemAtIndexPath:)]) {
         return [_delegate collectionView:collectionView shouldSelectItemAtIndexPath:indexPath];
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -340,7 +340,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldDeselectItemAtIndexPath:)]) {
         return [_delegate collectionView:collectionView shouldDeselectItemAtIndexPath:indexPath];
     }
-    return NO;
+    return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
