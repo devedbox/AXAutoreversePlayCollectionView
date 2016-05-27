@@ -242,6 +242,24 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
     }
 }
 
+- (NSIndexPath *)indexPathWithCurrentIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger item = indexPath.item;
+    NSIndexPath *_indexPath = indexPath;
+    if ([_collectionView numberOfSections] > 1) {
+        if (section >= _originalSection) {
+            section %= _originalSection;
+        }
+        _indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
+    } else {
+        if (item >= _originalNumberOfSection) {
+            item %= _originalNumberOfSection;
+        }
+        _indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+    }
+    return _indexPath;
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (_dataSource) {
@@ -258,21 +276,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_dataSource) {
-        NSInteger section = indexPath.section;
-        NSInteger item = indexPath.item;
-        NSIndexPath *_indexPath;
-        if ([collectionView numberOfSections] > 1) {
-            if (section >= _originalSection) {
-                section %= _originalSection;
-            }
-            _indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
-        } else {
-            if (item >= _originalNumberOfSection) {
-                item %= _originalNumberOfSection;
-            }
-            _indexPath = [NSIndexPath indexPathForItem:item inSection:0];
-        }
-        return [_dataSource collectionView:collectionView cellForItemAtIndexPath:_indexPath];
+        return [_dataSource collectionView:collectionView cellForItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return nil;
 }
@@ -289,26 +293,26 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (_dataSource && [_dataSource respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)]) {
-        return [_dataSource collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+        return [_dataSource collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return nil;
 }
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_dataSource && [_dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)]) {
-        return [_dataSource collectionView:collectionView canMoveItemAtIndexPath:indexPath];
+        return [_dataSource collectionView:collectionView canMoveItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return NO;
 }
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath*)destinationIndexPath {
     if (_dataSource && [_dataSource respondsToSelector:@selector(collectionView:moveItemAtIndexPath:toIndexPath:)]) {
-        [_dataSource collectionView:collectionView canMoveItemAtIndexPath:destinationIndexPath];
+        [_dataSource collectionView:collectionView canMoveItemAtIndexPath:[self indexPathWithCurrentIndexPath:destinationIndexPath]];
     }
 }
 #pragma mark - UICollectionViewDelegate
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldHighlightItemAtIndexPath:)]) {
-        return [_delegate collectionView:collectionView shouldHighlightItemAtIndexPath:indexPath];
+        return [_delegate collectionView:collectionView shouldHighlightItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return YES;
 }
@@ -316,21 +320,21 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didHighlightItemAtIndexPath:)]) {
-        [_delegate collectionView:collectionView didHighlightItemAtIndexPath:indexPath];
+        [_delegate collectionView:collectionView didHighlightItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didUnhighlightItemAtIndexPath:)]) {
-        [_delegate collectionView:collectionView didUnhighlightItemAtIndexPath:indexPath];
+        [_delegate collectionView:collectionView didUnhighlightItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldSelectItemAtIndexPath:)]) {
-        return [_delegate collectionView:collectionView shouldSelectItemAtIndexPath:indexPath];
+        return [_delegate collectionView:collectionView shouldSelectItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return YES;
 }
@@ -338,7 +342,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldDeselectItemAtIndexPath:)]) {
-        return [_delegate collectionView:collectionView shouldDeselectItemAtIndexPath:indexPath];
+        return [_delegate collectionView:collectionView shouldDeselectItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return YES;
 }
@@ -346,42 +350,42 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
-        [_delegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+        [_delegate collectionView:collectionView didSelectItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didDeselectItemAtIndexPath:)]) {
-        [_delegate collectionView:collectionView didDeselectItemAtIndexPath:indexPath];
+        [_delegate collectionView:collectionView didDeselectItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:willDisplayCell:forItemAtIndexPath:)]) {
-        [_delegate collectionView: collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+        [_delegate collectionView: collectionView willDisplayCell:cell forItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:)]) {
-        [_delegate collectionView:collectionView willDisplaySupplementaryView:view forElementKind:elementKind atIndexPath:indexPath];
+        [_delegate collectionView:collectionView willDisplaySupplementaryView:view forElementKind:elementKind atIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didEndDisplayingCell:forItemAtIndexPath:)]) {
-        [_delegate collectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:indexPath];
+        [_delegate collectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:)]) {
-        [_delegate collectionView:collectionView didEndDisplayingSupplementaryView:view forElementOfKind:elementKind atIndexPath:indexPath];
+        [_delegate collectionView:collectionView didEndDisplayingSupplementaryView:view forElementOfKind:elementKind atIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
 }
 
@@ -390,7 +394,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:shouldShowMenuForItemAtIndexPath:)]) {
-        return [_delegate collectionView:collectionView shouldShowMenuForItemAtIndexPath:indexPath];
+        return [_delegate collectionView:collectionView shouldShowMenuForItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return NO;
 }
@@ -398,7 +402,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:canPerformAction:forItemAtIndexPath:withSender:)]) {
-        return [_delegate collectionView:collectionView canPerformAction:action forItemAtIndexPath:indexPath withSender:sender];
+        return [_delegate collectionView:collectionView canPerformAction:action forItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath] withSender:sender];
     }
     return NO;
 }
@@ -406,7 +410,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:performAction:forItemAtIndexPath:withSender:)]) {
-        [_delegate collectionView:collectionView performAction:action forItemAtIndexPath:indexPath withSender:sender];
+        [_delegate collectionView:collectionView performAction:action forItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath] withSender:sender];
     }
 }
 
@@ -423,7 +427,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (BOOL)collectionView:(UICollectionView *)collectionView canFocusItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:canFocusItemAtIndexPath:)]) {
-        return [_delegate collectionView:collectionView canFocusItemAtIndexPath:indexPath];
+        return [_delegate collectionView:collectionView canFocusItemAtIndexPath:[self indexPathWithCurrentIndexPath:indexPath]];
     }
     return NO;
 }
@@ -453,7 +457,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (NSIndexPath *)collectionView:(UICollectionView *)collectionView targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)originalIndexPath toProposedIndexPath:(NSIndexPath *)proposedIndexPath
 {
     if (_delegate && [_delegate respondsToSelector:@selector(collectionView:targetIndexPathForMoveFromItemAtIndexPath:toProposedIndexPath:)]) {
-        return [_delegate collectionView:collectionView targetIndexPathForMoveFromItemAtIndexPath:originalIndexPath toProposedIndexPath:proposedIndexPath];
+        return [_delegate collectionView:collectionView targetIndexPathForMoveFromItemAtIndexPath:[self indexPathWithCurrentIndexPath:originalIndexPath] toProposedIndexPath:[self indexPathWithCurrentIndexPath:proposedIndexPath]];
     }
     return proposedIndexPath;
 }
