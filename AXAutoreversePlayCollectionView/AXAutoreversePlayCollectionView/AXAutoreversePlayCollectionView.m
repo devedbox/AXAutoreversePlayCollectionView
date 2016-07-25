@@ -236,10 +236,18 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 
 - (void)updateCurrentPosition {
     if (_collectionView.contentOffset.x >= _collectionView.contentSize.width - CGRectGetWidth(_collectionView.bounds)) {// 最右边
-        [_collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [self performSelectorOnMainThread:@selector(updateContentOffsetsToZero) withObject:nil waitUntilDone:YES modes:@[UITrackingRunLoopMode]];
     } else {
-        [_collectionView setContentOffset:CGPointMake(CGRectGetWidth(_collectionView.bounds)*(ceil(_collectionView.contentOffset.x/CGRectGetWidth(_collectionView.bounds))+1), 0) animated:YES];
+        [self performSelectorOnMainThread:@selector(updateContentOffsetsToTarget) withObject:nil waitUntilDone:YES modes:@[UITrackingRunLoopMode]];
     }
+}
+
+- (void)updateContentOffsetsToZero {
+    [_collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+- (void)updateContentOffsetsToTarget {
+    [_collectionView setContentOffset:CGPointMake(CGRectGetWidth(_collectionView.bounds)*(ceil(_collectionView.contentOffset.x/CGRectGetWidth(_collectionView.bounds))+1), 0) animated:YES];
 }
 
 - (NSIndexPath *)indexPathWithCurrentIndexPath:(NSIndexPath *)indexPath {
