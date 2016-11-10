@@ -215,6 +215,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
     CGPoint offsets = _collectionView.contentOffset;
     CGFloat flag = CGRectGetWidth(_collectionView.bounds);
     if ([_collectionView numberOfSections] == 1) {
+        if (_originalNumberOfSection==0) return;
         if (offsets.x != 0) {
             if (((NSInteger)offsets.x%(NSInteger)flag) <= 1.0) {
                 _pageControl.currentPage = ((NSInteger)(offsets.x/flag))%_originalNumberOfSection;
@@ -224,6 +225,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
         }
     } else {
         NSUInteger section = [_collectionView indexPathForItemAtPoint:CGPointMake(offsets.x+CGRectGetWidth(_collectionView.bounds)/2, offsets.y+CGRectGetHeight(_collectionView.bounds)/2)].section;
+        if (_originalSection==0) return;
         _pageControl.currentPage = section%_originalSection;
     }
 }
