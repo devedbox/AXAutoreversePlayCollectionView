@@ -57,7 +57,7 @@ static NSString *AXResusIdentifier = @"AXResusIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AXResusIdentifier" forIndexPath:indexPath];
-    cell.imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",@(indexPath.row+1)]];
+    cell.imgView.image = [UIImage imageNamed:@"1"];
     return cell;
 }
 #pragma mark - UICollectionViewDelegate

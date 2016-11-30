@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01342FDE1C99061900200F14 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01342FC71C99061900200F14 /* 1.jpg */; };
-		01342FE91C99061900200F14 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01342FD21C99061900200F14 /* 2.jpg */; };
-		01342FEE1C99061900200F14 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01342FD71C99061900200F14 /* 3.jpg */; };
 		01342FF81C99067E00200F14 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01342FF61C99067E00200F14 /* CollectionViewCell.m */; };
 		01342FF91C99067E00200F14 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01342FF71C99067E00200F14 /* CollectionViewCell.xib */; };
 		01979EFD1C9808BF00D02B0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01979EFC1C9808BF00D02B0B /* main.m */; };
@@ -20,12 +17,10 @@
 		01979F0B1C9808BF00D02B0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01979F091C9808BF00D02B0B /* LaunchScreen.storyboard */; };
 		01979F141C98098600D02B0B /* AXAutoreversePlayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01979F131C98098600D02B0B /* AXAutoreversePlayCollectionView.m */; };
 		2F1BBAF3AADC02C438128C3B /* libPods-AXAutoreversePlayCollectionView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0573818DBA021098D48E5550 /* libPods-AXAutoreversePlayCollectionView.a */; };
+		DC420C511DEE7C57007050B9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DC420C501DEE7C57007050B9 /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01342FC71C99061900200F14 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		01342FD21C99061900200F14 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		01342FD71C99061900200F14 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		01342FF51C99067E00200F14 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		01342FF61C99067E00200F14 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		01342FF71C99067E00200F14 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -44,6 +39,7 @@
 		0341B24C9E6FE05807F4D903 /* Pods-AXAutoreversePlayCollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AXAutoreversePlayCollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AXAutoreversePlayCollectionView/Pods-AXAutoreversePlayCollectionView.debug.xcconfig"; sourceTree = "<group>"; };
 		0573818DBA021098D48E5550 /* libPods-AXAutoreversePlayCollectionView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AXAutoreversePlayCollectionView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		340D643E6794940C24D201D8 /* Pods-AXAutoreversePlayCollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AXAutoreversePlayCollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-AXAutoreversePlayCollectionView/Pods-AXAutoreversePlayCollectionView.release.xcconfig"; sourceTree = "<group>"; };
+		DC420C501DEE7C57007050B9 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +57,7 @@
 		01342FC61C99061900200F14 /* 屏保 */ = {
 			isa = PBXGroup;
 			children = (
-				01342FC71C99061900200F14 /* 1.jpg */,
-				01342FD21C99061900200F14 /* 2.jpg */,
-				01342FD71C99061900200F14 /* 3.jpg */,
+				DC420C501DEE7C57007050B9 /* 1.png */,
 			);
 			path = "屏保";
 			sourceTree = "<group>";
@@ -148,12 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01979F0F1C9808BF00D02B0B /* Build configuration list for PBXNativeTarget "AXAutoreversePlayCollectionView" */;
 			buildPhases = (
-				7A3B16388B6763CE26ED64B5 /* Check Pods Manifest.lock */,
+				7A3B16388B6763CE26ED64B5 /* [CP] Check Pods Manifest.lock */,
 				01979EF41C9808BF00D02B0B /* Sources */,
 				01979EF51C9808BF00D02B0B /* Frameworks */,
 				01979EF61C9808BF00D02B0B /* Resources */,
-				66A50E162FFE15E4AA02C2D1 /* Embed Pods Frameworks */,
-				3C7DA5B0CCD16858D46FFAF3 /* Copy Pods Resources */,
+				66A50E162FFE15E4AA02C2D1 /* [CP] Embed Pods Frameworks */,
+				3C7DA5B0CCD16858D46FFAF3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,9 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01979F0B1C9808BF00D02B0B /* LaunchScreen.storyboard in Resources */,
-				01342FDE1C99061900200F14 /* 1.jpg in Resources */,
-				01342FEE1C99061900200F14 /* 3.jpg in Resources */,
-				01342FE91C99061900200F14 /* 2.jpg in Resources */,
+				DC420C511DEE7C57007050B9 /* 1.png in Resources */,
 				01979F081C9808BF00D02B0B /* Assets.xcassets in Resources */,
 				01979F061C9808BF00D02B0B /* Main.storyboard in Resources */,
 				01342FF91C99067E00200F14 /* CollectionViewCell.xib in Resources */,
@@ -214,14 +206,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C7DA5B0CCD16858D46FFAF3 /* Copy Pods Resources */ = {
+		3C7DA5B0CCD16858D46FFAF3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,14 +221,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AXAutoreversePlayCollectionView/Pods-AXAutoreversePlayCollectionView-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66A50E162FFE15E4AA02C2D1 /* Embed Pods Frameworks */ = {
+		66A50E162FFE15E4AA02C2D1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,19 +236,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AXAutoreversePlayCollectionView/Pods-AXAutoreversePlayCollectionView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A3B16388B6763CE26ED64B5 /* Check Pods Manifest.lock */ = {
+		7A3B16388B6763CE26ED64B5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

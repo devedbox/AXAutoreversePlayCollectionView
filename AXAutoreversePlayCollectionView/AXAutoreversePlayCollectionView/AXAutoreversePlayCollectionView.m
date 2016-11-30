@@ -14,7 +14,7 @@
 {
     UIPageControl *_pageControl;
     AXCollectionView *_collectionView;
-    AXCollectionViewFlowLayout *_collectionViewLayout;
+    AXPreviewingCollectionViewFlowLayout *_collectionViewLayout;
     NSTimer *_timer;
     NSInteger _originalSection;
     NSInteger _originalNumberOfSection;
@@ -97,7 +97,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 
 - (AXCollectionView *)collectionView {
     if (_collectionView) return _collectionView;
-    _collectionViewLayout = [[AXCollectionViewFlowLayout alloc] init];
+    _collectionViewLayout = [[AXPreviewingCollectionViewFlowLayout alloc] init];
     _collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     _collectionView = [[AXCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_collectionViewLayout];
     _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -214,7 +214,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (void)refreshPageControl {
     CGPoint offsets = _collectionView.contentOffset;
     CGFloat flag = CGRectGetWidth(_collectionView.bounds);
-    if ([_collectionView numberOfSections] == 1) {
+    if ([_collectionView numberOfSections] == 1 && flag != 0) {
         if (_originalNumberOfSection==0) return;
         if (offsets.x != 0) {
             if (((NSInteger)offsets.x%(NSInteger)flag) <= 1.0) {
@@ -233,7 +233,7 @@ static NSString *AXCollectionViewContentOffsetKey = @"collectionView.contentOffs
 - (void)fireReverseTimer {
     __weak typeof(self) wself = self;
     _timer = [NSTimer timerWithTimeInterval:_autoReverseTimeinternal target:wself selector:@selector(updateCurrentPosition) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)updateCurrentPosition {

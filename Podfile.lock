@@ -1,21 +1,24 @@
 PODS:
-  - Aspects (1.4.1)
   - AXCollectionViewFlowLayout (1.0.1)
-  - AXExtensions (1.2.2):
+  - AXExtensions (1.2.13):
     - MJRefresh (~> 3.0.0)
+    - pop
+  - AXPreviewingCollectionViewFlowLayout (1.0.0)
   - MJRefresh (3.0.8)
+  - pop (1.0.9)
 
 DEPENDENCIES:
-  - Aspects
   - AXCollectionViewFlowLayout
   - AXExtensions
+  - AXPreviewingCollectionViewFlowLayout
 
 SPEC CHECKSUMS:
-  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   AXCollectionViewFlowLayout: bf02f0b0733741258e8afe2974b5e02fd645ce08
-  AXExtensions: 68e5c748ca1973ac2c1cc1d32597477b7a34058e
+  AXExtensions: eb2ada06b16cf39b4960bee159d7fcf542b16e23
+  AXPreviewingCollectionViewFlowLayout: fe9174298ff8dfbd4ec071b3bbb3922e8710fa0e
   MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-PODFILE CHECKSUM: 94cd9cbd214038303ec63126149b4decd0621bc0
+PODFILE CHECKSUM: 50a5adfcf8e79f5866eadab154340c407171005d
 
-COCOAPODS: 1.0.0.beta.4
+COCOAPODS: 1.1.1
